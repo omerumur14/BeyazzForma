@@ -1,0 +1,26 @@
+﻿@model IEnumerable<BeyazzFormaWeb.Entity.Category>
+@{
+	var selectedCategory = Url.RequestContext.RouteData.Values["id"];
+}
+<div class="list-group">
+    <a href="/Home/List" class="list-group-item list-group-item-action" style="color: black;">Tüm Kategoriler</a>
+    @foreach (var list in Model)
+    {
+        if (selectedCategory != null)
+        {
+            if (list.Id == int.Parse(selectedCategory.ToString()))
+            {
+                //seçilen kategori ile url id birbirine eşit
+                <a href="/Home/List/@list.Id" class="list-group-item list-group-item-action active" style="color: black;">@list.Name</a>
+            }
+            else
+            {
+				<a href="/Home/List/@list.Id" class="list-group-item list-group-item-action" style="color: black; ">@list.Name</a>
+            }
+        }
+        else
+        {
+			<a href="/Home/List/@list.Id" class="list-group-item list-group-item-action" style="color: black;">@list.Name</a>
+        }
+    }
+</div>

@@ -1,0 +1,19 @@
+﻿@using BeyazzFormaWeb.Models
+@model IEnumerable<ProductModel>
+<div class="row">
+    @foreach (var urun in Model)
+    {
+        <div class="col-md-4">
+            <div class="card mb-5" onclick="location.href='/Home/Details/@urun.Id';" style="cursor: pointer;">
+                <img class="card-img-top" style="height: 260px;" src="~/theme/img/@urun.Image" alt="@urun.Name">
+                <div class="card-body">
+                    <h5 class="card-title">@urun.Name</h5>
+                    <p class="card-text descripton pt-3">@urun.Description</p>
+                </div>
+                <div class="card-footer" style="background-color: #6c757d47;">
+                    <h4 style="text-align:center; margin-bottom: 0px;">@urun.Price TL</h4>
+                </div>
+            </div>
+        </div>
+    }
+</div>
